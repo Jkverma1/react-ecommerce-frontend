@@ -5,6 +5,7 @@ const ShopCart = ({ shopItems, addToCart }) => {
   const increment = () => {
     setCount(count + 1);
   };
+  const ImgAPI = "http://13.58.233.99:8080/products/images";
 
   return (
     <>
@@ -13,8 +14,11 @@ const ShopCart = ({ shopItems, addToCart }) => {
           <div className="box">
             <div className="product mtop">
               <div className="img shopImg-container">
-                <span className="discount">{shopItems.discount}% Off</span>
-                <img src={shopItems.cover} alt="" />
+                {/* <span className="discount">{shopItems.discount}% Off</span> */}
+                <img
+                  src={`${ImgAPI}/${shopItems.image_dir}/${shopItems.image_count}`}
+                  alt=""
+                />
                 <div className="product-like">
                   <label>{count}</label> <br />
                   <i className="fa-regular fa-heart" onClick={increment}></i>

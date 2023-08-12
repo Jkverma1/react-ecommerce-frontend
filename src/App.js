@@ -2,14 +2,22 @@ import React, { useState } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Header from "./common/header/Header";
+import ProductPage from "./components/ProductPage";
 import Pages from "./pages/Pages";
 import Data from "./components/Data";
 import Cart from "./common/Cart/Cart";
 import Login from "./common/auth/login";
 import Footer from "./common/footer/Footer";
-import Sdata from "./components/shops/Sdata";
+// import Sdata from "./components/shops/Sdata";
+import axios from "axios";
 
 function App() {
+  const [shopItems, SetShopItems] = useState([]);
+  axios
+    .get("http://13.58.233.99:8080/products?category=lehenga&top=true")
+    .then(function (response) {
+      SetShopItems(response.data);
+    });
   /*
   step1 :  const { productItems } = Data 
   lai pass garne using props
@@ -24,7 +32,6 @@ function App() {
 
   //Step 1 :
   const { productItems } = Data;
-  const { shopItems } = Sdata;
 
   //Step 2 :
   const [CartItem, setCartItem] = useState([]);
@@ -101,6 +108,9 @@ function App() {
               addToCart={addToCart}
               decreaseQty={decreaseQty}
             />
+          </Route>
+          <Route path="/productpage" exact>
+            <ProductPage />
           </Route>
         </Switch>
         <Footer />

@@ -29,6 +29,9 @@ const Ndata = [
     name: "Sarree",
     price: "400",
   },
+  {
+    price:"200"
+  }
 ];
 
 export default Ndata;

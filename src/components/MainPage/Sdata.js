@@ -1,4 +1,4 @@
-const Sdata = [
+                                                                                                                                                                const Sdata = [
   {
     id: 1,
     title: "50% Off For Your First Shopping",
